@@ -38,8 +38,10 @@ $wc = New-Object System.Net.WebClient; `
 $llvmUrl = 'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.5/clang+llvm-18.1.5-x86_64-pc-windows-msvc.tar.xz'; `
 $llvmArchive = 'C:\downloads\llvm.tar.xz'; `
 $wc.DownloadFile($llvmUrl, $llvmArchive); `
+Write-Host "Extracting the gunzip..."; `
 & 'C:\Program Files\7-Zip\7z.exe' x $llvmArchive -oC:\downloads\tmp1 | Out-Null; `
 $tarFile = (Get-ChildItem C:\downloads\tmp1 -Filter *.tar | Select-Object -First 1).FullName; `
+Write-Host "Extracting the tar archive..."; `
 & 'C:\Program Files\7-Zip\7z.exe' x $tarFile -oC:\downloads\tmp2 | Out-Null; `
 $llvmFolder = Get-ChildItem C:\downloads\tmp2 | Where-Object { $_.PSIsContainer -and $_.Name -like 'clang+llvm*' } | Select-Object -First 1; `
 New-Item -ItemType Directory -Force -Path C:\IRvana\LLVM-18.1.5 | Out-Null; `
@@ -47,6 +49,8 @@ Move-Item -Path (Join-Path $llvmFolder.FullName '*') -Destination 'C:\IRvana\LLV
 Remove-Item -Recurse -Force C:\downloads; `
 Write-Host "LLVM 18.1.5 extracted to C:\IRvana\LLVM-18.1.5"
 
+# Refresh the paths
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 # Install Windows SDK 10.0.26100 (already implemented in vscode install, but just here for backup)
 # RUN Write-Host "Downloading and installing Windows SDK 10.0.26100..."; `
