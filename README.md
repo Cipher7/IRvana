@@ -129,7 +129,7 @@ These steps are prerequisites required before using the project and interpreters
 Install git and clone project source on Windows.
 
 ```PowerShell
-> git clone https://github.com/IRvana
+> git clone https://github.com/m3rcer/IRvana.git
 > cd IRvana
 ```
 
