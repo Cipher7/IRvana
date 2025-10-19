@@ -55,6 +55,7 @@ RUN Write-Host "Downloading LLVM 18.1.5..."; \
     Remove-Item -Recurse -Force C:\downloads; \
     Write-Host "LLVM 18.1.5 extracted to C:\IRvana\LLVM-18.1.5"
 
+RUN $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 # Clone IRvana repository
 #RUN git clone --depth 1 https://github.com/m3rcer/IRvana.git C:\IRvana\repo (commented for testing)
 RUN git clone --depth 1 https://github.com/Cipher7/IRvana C:\IRvana\repo
