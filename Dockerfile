@@ -1,4 +1,8 @@
 #syntax=docker/dockerfile:1
+
+# Dockerfile to create a windows container and install IRvana
+# along with all its dependencies and environment setting
+
 FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 SHELL ["powershell", "-NoProfile", "-Command", "$ErrorActionPreference = 'Stop';"]
