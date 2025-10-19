@@ -63,7 +63,8 @@ RUN Write-Host "Downloading LLVM 18.1.5..."; \
 #     Write-Host "Windows SDK installed."
 
 # Clone IRvana repository
-RUN git clone --depth 1 https://github.com/m3rcer/IRvana.git C:\IRvana\repo
+#RUN git clone --depth 1 https://github.com/m3rcer/IRvana.git C:\IRvana\repo (commented for testing)
+RUN git clone --depth 1 https://github.com/Cipher7/IRvana C:\IRvana\repo
 
 # Set up environment
 ENV LLVM_HOME="C:\\IRvana"
