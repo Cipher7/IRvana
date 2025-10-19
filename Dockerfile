@@ -51,17 +51,6 @@ RUN Write-Host "Downloading LLVM 18.1.5..."; \
     Remove-Item -Recurse -Force C:\downloads; \
     Write-Host "LLVM 18.1.5 extracted to C:\IRvana\LLVM-18.1.5"
 
-
-# Install Windows SDK 10.0.26100 (already implemented in vscode install, but just here for backup)
-# RUN Write-Host "Downloading and installing Windows SDK 10.0.26100..."; \
-#     $wc = New-Object System.Net.WebClient; \
-#     $sdkInstaller = "C:\\downloads\\winsdksetup.exe"; \
-#     $wc.DownloadFile("https://go.microsoft.com/fwlink/?linkid=2335755", $sdkInstaller); \
-#     Write-Host "Installing Windows SDK..."; \
-#     Start-Process -FilePath $sdkInstaller -ArgumentList "/quiet", "/norestart" -Wait; \
-#     Remove-Item $sdkInstaller -Force; \
-#     Write-Host "Windows SDK installed."
-
 # Clone IRvana repository
 #RUN git clone --depth 1 https://github.com/m3rcer/IRvana.git C:\IRvana\repo (commented for testing)
 RUN git clone --depth 1 https://github.com/Cipher7/IRvana C:\IRvana\repo
